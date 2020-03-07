@@ -4,8 +4,9 @@ import numpy as np
 import pandas as pd
 import datetime as dt
 from matplotlib import style
+import matplotlib.pyplot as plt
 import pandas_datareader.data as web
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 
 
 # def cur_price(tick_symbol):
