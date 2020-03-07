@@ -18,7 +18,7 @@ import pandas_datareader.data as web
 #daily_HLOCV returns a dataframe of HLOCV of a stock during the desired period
 def daily_HLOCV(tick_symbol, start, end): 
     style.use('ggplot')
-    start = dt.datetime(2000,1,1)
-    end = dt.datetime(2019,8,20)
+    # start = dt.datetime(2000,1,1)
+    # end = dt.datetime(2019,8,20)
     df = web.DataReader(tick_symbol,'yahoo', start, end)
     return df
