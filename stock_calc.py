@@ -41,6 +41,7 @@ class Stock():
         return stock_sigma
 
 
+#find a way to replace this branch later
 def stock_beta(stock_symbol,benchmark):
     start = dt.datetime(2000,1,1)
     end = dt.datetime.now()
