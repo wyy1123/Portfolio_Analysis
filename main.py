@@ -16,7 +16,7 @@ portfolio = Portfolio(stock_symbols,share_numbers)
  
 date = start = dt.datetime(2020,3,6)
 
-portfolio.calc_portfolio_value(date)
+portfolio.calc_portfolio_value_on_date(date)
 
 benchmark = '^GSPC'
 portfolio.calc_portfolio_beta(benchmark)
