@@ -8,14 +8,17 @@ import pandas_datareader.data as web
 from grab_asset_data import daily_HLOCV
 
 class Stock():
-    def __init__(self, stock_symbols, share_numbers):
-        pass
+    def __init__(self, stock_symbol):
+        self.symbol = stock_symbol
+        self.daily_HLOCV = daily_HLOCV(stock_symbol,dt.datetime(2000,1,1), dt.datetime.now())
+        self.closing_price_history = self.daily_HLOCV['Close']
+        self.last_closing_price = self.closing_price_history[-1]
+        self.sigma = 0
+        self.beta = 0 
 
-    def calc_beta(self, stock_symbol,benchmark):
+    def calc_beta(self, benchmark):
         #here the beta is calculated with price series since IPO
-        start = dt.datetime(2000,1,1)
-        end = dt.datetime.now()
-        stock_df = daily_HLOCV(stock_symbol,start,end)
+        stock_df = self.daily_HLOCV
 
         stock_start = stock_df.index[0]
         stock_end = stock_df.index[-1]
@@ -32,8 +35,8 @@ class Stock():
         return beta
 
 
-    def calc_sigma(self, stock_symbol,start,end):
-        stock_df = web.DataReader(stock_symbol,'yahoo', start, end)
+    def calc_sigma(self,start,end):
+        stock_df = web.DataReader(self.ymbol,'yahoo', start, end)
         stock_sigma = np.std(stock_df['Close'])
         return stock_sigma
 
