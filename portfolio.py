@@ -7,7 +7,7 @@ from matplotlib import style
 import matplotlib.pyplot as plt
 import pandas_datareader.data as web
 from grab_asset_data import daily_HLOCV
-from stock_calc import Stock
+from stock_calc import Stock, stock_beta
 
 #the portfolioclass
 class Portfolio():
