@@ -18,7 +18,12 @@ date = start = dt.datetime(2020,3,6)
 
 portfolio.calc_portfolio_value(date)
 
+benchmark = '^GSPC'
+portfolio.calc_portfolio_beta(benchmark)
+
 print(portfolio.stock_values)
 print(portfolio.stock_weights)
+print(portfolio.stock_betas)
+print(portfolio.portfolio_beta)
 
 portfolio.visualize()

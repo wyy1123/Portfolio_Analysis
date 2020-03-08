@@ -7,6 +7,7 @@ from matplotlib import style
 import matplotlib.pyplot as plt
 import pandas_datareader.data as web
 from grab_asset_data import daily_HLOCV
+from beta_calc import stock_beta
 
 #the portfolioclass
 class Portfolio():
@@ -15,8 +16,12 @@ class Portfolio():
         self.stock_symbols = stock_symbols
         self.share_numbers = share_numbers
         self.portfolio_value = 0
+        self.portfolio_beta = 0
+        self.portfolio_sigma = 0
         self.stock_values = []
         self.stock_weights = []
+        self.stock_betas = []
+        self.stock_sigmas = []
 
     #a method that calculates the portfolio value on a certain date:
     def calc_portfolio_value(self,date):
@@ -34,6 +39,11 @@ class Portfolio():
 
         for i in range(len(self.stock_values)):
             self.stock_weights.append(self.stock_values[i]/self.portfolio_value)
+    
+    def calc_portfolio_beta(self, benchmark):
+        for i in range(len(self.stock_symbols)):
+            self.stock_betas.append(stock_beta(self.stock_symbols[i],benchmark))
+        self.portfolio_beta = np.sum(np.asarray(self.stock_betas)*np.asarray(self.stock_weights))
 
     def visualize(self):
         labels = self.stock_symbols
